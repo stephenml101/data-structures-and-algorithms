@@ -1,6 +1,6 @@
-package codechallenges.linkedlist;
+package src.main.java.codechallenges;
 
-import datastructures.linkedlist.LinkedList;
+import src.main.java.datastructures.LinkedList;
 
 public class LinkedListChallenges
 {

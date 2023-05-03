@@ -56,7 +56,7 @@ You will be working in the `codechallenges` subfolder for all of your algorithm 
 - For each data structure, create a new folder and class in the `codechallenges` subfolder of the `main` branch of Gradle library source, with the name of the new data structure in the folder and class names. This is where your code challenge methods will eventually be written.
   - Ex. Linked Lists: `lib\src\main\java\codechallenges\linkedlist\LinkedListChallenges.java`
 - Import the subfolder of the appropriate data structure source folder.
-  - Ex. Linked Lists: (`import datastructures.linkedlist.LinkedList;`)
+  - Ex. Linked Lists: (`import src.main.java.datastructures.LinkedList;`)
 - For each code challenge, create a new method within that class, using the challenge name.
   - Ex. `findMiddleNode()`
 
