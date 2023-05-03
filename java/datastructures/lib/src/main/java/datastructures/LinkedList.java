@@ -1,4 +1,4 @@
-package datastructures.linkedlist;
+package src.main.java.datastructures;
 
 public class LinkedList
 {
