@@ -109,6 +109,32 @@ public class BinaryTree<T extends Comparable<T>> {
     return root;
   }
 
+  public List<T> breadthFirstTraversal() {
+    List<T> output = new ArrayList<>();
+
+    if (this.root == null) {
+      return output;
+    }
+
+    Queue<Node<T>> queue = (Queue<Node<T>>) new LinkedList();
+    queue.add(this.root);
+
+    while (!queue.isEmpty()) {
+      Node<T> current = queue.poll();
+      output.add(current.value);
+
+      if(current.left != null) {
+        queue.add(current.left);
+      }
+
+      if(current.right != null) {
+        queue.add(current.right);
+      }
+    }
+
+    return output;
+  }
+
 }
 
   //methods

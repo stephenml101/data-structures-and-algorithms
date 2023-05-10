@@ -62,5 +62,22 @@ public class BinaryTreeTest {
     int expectedMax = 11;
     assertEquals(Optional.of(expectedMax), tree.getMax());
   }
+  @Test
+  public void testBreadthFirstTraversal() {
+    BinaryTree<Integer> tree = new BinaryTree<>(2);
+
+    // [2,7,5,2,6,9,5,11,4]
+    tree.add(7);
+    tree.add(5);
+    tree.add(2);
+    tree.add(6);
+    tree.add(9);
+    tree.add(5);
+    tree.add(11);
+    tree.add(4);
+
+    List<Integer> expectedList = Arrays.asList(2, 7, 5, 2, 6, 9, 5, 11, 4);
+    assertEquals(expectedList, tree.breadthFirstTraversal());
+  }
 
 }
