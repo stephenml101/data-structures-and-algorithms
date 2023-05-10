@@ -1,12 +1,11 @@
 package src.main.java.datastructures.queue;
 
-public class Queue<T>
-{
+
+public class Queue<T> {
   Node<T> front;
   Node<T> back;
 
-  public void enqueue(T valueToEnqueue)
-  {
+  public void enqueue(T valueToEnqueue) {
     Node<T> newNode = new Node<>(valueToEnqueue);
     if (back != null) {
       back.next = newNode;
@@ -17,8 +16,7 @@ public class Queue<T>
     }
   }
 
-  public T dequeue()
-  {
+  public T dequeue() {
     if (isEmpty()) {
       throw new RuntimeException("Queue is empty");
     }
@@ -30,8 +28,7 @@ public class Queue<T>
     return dequeuedNode.value;
   }
 
-  public T peek()
-  {
+  public T peek() {
     if (isEmpty()) {
       throw new RuntimeException("Queue is empty.");
     }
@@ -39,8 +36,9 @@ public class Queue<T>
     return front.value;
   }
 
-  public boolean isEmpty()
-  {
+  public boolean isEmpty() {
     return front == null;
   }
 }
+
+

@@ -1,54 +1,115 @@
 package src.main.java.datastructures.tree;
 
+import src.main.java.datastructures.linkedlist.LinkedList;
+import java.util.Queue;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
-public class BinaryTree {
-  Node root;
+public class BinaryTree<T extends Comparable<T>> {
+  protected Node<T> root;
 
-  public BinaryTree() {
-    root = null;
+  public BinaryTree(T value) {
+    root = new Node<>(value);
   }
 
-  public int[] preorderTraversal() {
-    List<Integer> result = new ArrayList<>();
-    preorderTraversalHelper(root, result);
-    return result.stream().mapToInt(Integer::intValue).toArray();
+  public List<T> preOrderTraversal() {
+    List<T> output = new ArrayList<>();
+    preOrderTraversal(this.root, output);
+    return output;
   }
 
-  private void preorderTraversalHelper(Node node, List<Integer> result) {
+  private void preOrderTraversal(Node<T> node, List<T> output) {
     if (node == null) return;
-    result.add((Integer) node.value);
-    preorderTraversalHelper(node.left, result);
-    preorderTraversalHelper(node.right, result);
+
+    output.add(node.value);
+    preOrderTraversal(node.left, output);
+    preOrderTraversal(node.right, output);
   }
 
-  public int[] inorderTraversal() {
-    List<Integer> result = new ArrayList<>();
-    inorderTraversalHelper(root, Collections.singletonList(result));
-    return result.stream().mapToInt(Integer::intValue).toArray();
+  public List<T> inOrderTraversal() {
+    List<T> output = new ArrayList<>();
+    inOrderTraversal(this.root, output);
+    return output;
   }
 
-  private void inorderTraversalHelper(Node node, List<Object> result) {
+  private void inOrderTraversal(Node<T> node, List<T> output) {
     if (node == null) return;
-    inorderTraversalHelper(node.left, result);
-    result.add(node.value);
-    inorderTraversalHelper(node.right, result);
+
+    preOrderTraversal(node.left, output);
+    output.add(node.value);
+    preOrderTraversal(node.right, output);
   }
 
-  public int[] postorderTraversal() {
-    List<Integer> result = new ArrayList<>();
-    postorderTraversalHelper(root, Collections.singletonList(result));
-    return result.stream().mapToInt(Integer::intValue).toArray();
+  public List<T> postOrderTraversal() {
+    List<T> output = new ArrayList<>();
+    postOrderTraversal(this.root, output);
+    return output;
   }
 
-  private void postorderTraversalHelper(Node node, List<Object> result) {
+  private void postOrderTraversal(Node<T> node, List<T> output) {
     if (node == null) return;
-    postorderTraversalHelper(node.left, result);
-    postorderTraversalHelper(node.right, result);
-    result.add(node.value);
+
+    postOrderTraversal(node.left, output);
+    postOrderTraversal(node.right, output);
+    output.add(node.value);
   }
+
+  public void add(T value) {
+    Queue<Node<T>> queue = (Queue<Node<T>>) new LinkedList();
+    this.root = add(this.root, value, queue);
+  }
+
+  private Node<T> add(Node<T> node, T value, Queue<Node<T>> queue) {
+    if (node == null) {
+      return new Node<>(value);
+    }
+
+    if (node.left == null) {
+      node.left = new Node<>(value);
+      return node;
+    } else if (node.right == null) {
+      node.right = new Node<>(value);
+      return node;
+    } else {
+      queue.add(node.left);
+      queue.add(node.right);
+      add(queue.poll(), value, queue);
+    }
+
+    return node;
+  }
+
+
+  public T getMax() {
+    if (this.root == null) {
+      throw new RuntimeException("Yo! Tree be empty!");
+    }
+
+    return getMax(this.root);
+  }
+
+  private T getMax(Node<T> node) {
+    if (node == null) return null;
+
+    T currentValue = node.value;
+    T leftMax = getMax(node.left);
+    T rightMax = getMax(node.right);
+    T max = currentValue;
+    if (leftMax != null && leftMax.compareTo(max) > 0) {
+      max = leftMax;
+    }
+    if (rightMax != null && rightMax.compareTo(max) > 0) {
+      max = rightMax;
+    }
+
+    return max;
+  }
+
+  public Node<T> getRoot() {
+    return root;
+  }
+
+}
 
   //methods
 //  public <T> void preOrder(Node<T> node){
@@ -85,4 +146,4 @@ public class BinaryTree {
 
 
 
-}
+
