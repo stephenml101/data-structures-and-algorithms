@@ -1,4 +1,4 @@
-package src.test.java.datastructures.tree;
+package datastructures.tree;
 
 import src.main.java.datastructures.tree.BinarySearchTree;
 import org.junit.jupiter.api.BeforeEach;

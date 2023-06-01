@@ -1,10 +1,11 @@
 
 
 
-package src.main.java.codechallenges;
+package codechallenges;
 
-import src.main.java.datastructures.linkedlist.LinkedList;
-import src.main.java.datastructures.linkedlist.Node;
+
+import datastructures.linkedlist.LinkedList;
+import datastructures.linkedlist.Node;
 
 public class LinkedListChallenges
 {

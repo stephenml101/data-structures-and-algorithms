@@ -1,6 +1,8 @@
 package src.main.java.datastructures.tree;
 
-import src.main.java.datastructures.tree.Node;
+
+import datastructures.tree.BinaryTree;
+import datastructures.tree.Node;
 
 public class BinarySearchTree<T extends Comparable<T>> extends BinaryTree<T> {
 

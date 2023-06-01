@@ -1,4 +1,4 @@
-package src.main.java.datastructures.linkedlist;
+package datastructures.linkedlist;
 
 import java.util.HashMap;
 import java.util.Map;
