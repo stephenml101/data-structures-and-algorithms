@@ -1,4 +1,4 @@
-package src.main.java.datastructures.tree;
+package datastructures.tree;
 
 
 public class Node<T> {

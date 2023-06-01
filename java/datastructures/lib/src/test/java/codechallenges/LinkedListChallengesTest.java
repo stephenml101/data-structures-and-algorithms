@@ -1,8 +1,7 @@
-package src.test.java.codechallenges;
+package codechallenges;
 
+import datastructures.linkedlist.LinkedList;
 import org.junit.jupiter.api.Test;
-import src.main.java.codechallenges.LinkedListChallenges;
-import src.main.java.datastructures.linkedlist.LinkedList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

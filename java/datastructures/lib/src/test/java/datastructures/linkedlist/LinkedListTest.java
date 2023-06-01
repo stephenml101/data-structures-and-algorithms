@@ -1,9 +1,8 @@
 
 
-package src.test.java.datastructures.linkedlist;
+package datastructures.linkedlist;
 
 import org.junit.jupiter.api.Test;
-import src.main.java.datastructures.linkedlist.LinkedList;
 
 import java.util.NoSuchElementException;
 

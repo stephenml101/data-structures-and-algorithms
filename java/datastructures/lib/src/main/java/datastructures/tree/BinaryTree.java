@@ -1,9 +1,11 @@
-package src.main.java.datastructures.tree;
+package datastructures.tree;
 
-import src.main.java.datastructures.linkedlist.LinkedList;
-import java.util.Queue;
+
+import datastructures.linkedlist.LinkedList;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Queue;
 
 public class BinaryTree<T extends Comparable<T>> {
   protected Node<T> root;
