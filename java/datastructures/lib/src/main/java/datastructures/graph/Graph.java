@@ -1,7 +1,6 @@
 package datastructures.graph;
 
-import java.util.HashMap;
-import java.util.LinkedList;
+import java.util.*;
 
 public class Graph<T extends Comparable<? super T>> implements Comparable<Graph<T>>  // just in case you have Comparable data structures
 {
@@ -58,6 +57,31 @@ public class Graph<T extends Comparable<? super T>> implements Comparable<Graph<
   public int size()
   {
     return numberOfVertices;  // TODO: make sure this gets updated at the right times
+  }
+
+  // Breadth First Search
+  public List<Vertex<T>> breadthFirst(Vertex<T> start) {
+    List<Vertex<T>> visited = new ArrayList<>();
+    Queue<Vertex<T>> queue = new LinkedList<>();
+    Set<Vertex<T>> seen = new HashSet<>();
+
+    queue.add(start);
+    seen.add(start);
+
+    while (!queue.isEmpty()) {
+      Vertex<T> current = queue.poll();
+      visited.add(current);
+
+      for (Edge<T> edge : adjacencyLists.get(current)) {
+        Vertex<T> neighbor = edge.destination;
+        if (!seen.contains(neighbor)) {
+          queue.add(neighbor);
+          seen.add(neighbor);
+        }
+      }
+    }
+
+    return visited;
   }
 
   @Override

@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.LinkedList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -81,5 +82,32 @@ public class GraphTest {
     assertEquals(1, edges.size());
     assertEquals(singleVertex, edges.get(0).destination);
     assertEquals(0, edges.get(0).weight);
+  }
+
+  @Test
+  void testBreadthFirst() {
+    Graph<String> graph = new Graph<>(6);
+    Vertex<String> vertex1 = graph.addVertex("Pandora");
+    Vertex<String> vertex2 = graph.addVertex("Arendelle");
+    Vertex<String> vertex3 = graph.addVertex("Metroville");
+    Vertex<String> vertex4 = graph.addVertex("Monstropolis");
+    Vertex<String> vertex5 = graph.addVertex("Narnia");
+    Vertex<String> vertex6 = graph.addVertex("Naboo");
+
+    graph.addEdge(vertex1, vertex2);
+    graph.addEdge(vertex1, vertex3);
+    graph.addEdge(vertex2, vertex4);
+    graph.addEdge(vertex3, vertex4);
+    graph.addEdge(vertex3, vertex5);
+    graph.addEdge(vertex4, vertex6);
+
+    List<Vertex<String>> visited = graph.breadthFirst(vertex1);
+    assertEquals(6, visited.size());
+    assertEquals(vertex1, visited.get(0));
+    assertEquals(vertex2, visited.get(1));
+    assertEquals(vertex3, visited.get(2));
+    assertEquals(vertex4, visited.get(3));
+    assertEquals(vertex5, visited.get(4));
+    assertEquals(vertex6, visited.get(5));
   }
 }
