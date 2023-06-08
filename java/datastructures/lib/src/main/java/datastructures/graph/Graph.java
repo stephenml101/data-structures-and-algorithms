@@ -84,6 +84,25 @@ public class Graph<T extends Comparable<? super T>> implements Comparable<Graph<
     return visited;
   }
 
+  public List<Vertex<T>> depthFirst(Vertex<T> start) {
+    List<Vertex<T>> visited = new ArrayList<>();
+    Set<Vertex<T>> seen = new HashSet<>();
+    depthFirstRecursive(start, visited, seen);
+    return visited;
+  }
+
+  private void depthFirstRecursive(Vertex<T> current, List<Vertex<T>> visited, Set<Vertex<T>> seen) {
+    visited.add(current);
+    seen.add(current);
+
+    for (Edge<T> edge : adjacencyLists.get(current)) {
+      Vertex<T> neighbor = edge.destination;
+      if (!seen.contains(neighbor)) {
+        depthFirstRecursive(neighbor, visited, seen);
+      }
+    }
+  }
+
   @Override
   public int compareTo(Graph<T> o)
   {
