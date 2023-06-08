@@ -110,4 +110,35 @@ public class GraphTest {
     assertEquals(vertex5, visited.get(4));
     assertEquals(vertex6, visited.get(5));
   }
+
+  @Test
+  void testDepthFirst() {
+    Graph<String> graph = new Graph<>(8);
+    Vertex<String> vertexA = graph.addVertex("A");
+    Vertex<String> vertexB = graph.addVertex("B");
+    Vertex<String> vertexC = graph.addVertex("C");
+    Vertex<String> vertexD = graph.addVertex("D");
+    Vertex<String> vertexE = graph.addVertex("E");
+    Vertex<String> vertexF = graph.addVertex("F");
+    Vertex<String> vertexG = graph.addVertex("G");
+    Vertex<String> vertexH = graph.addVertex("H");
+
+    graph.addEdge(vertexA, vertexB);
+    graph.addEdge(vertexA, vertexC);
+    graph.addEdge(vertexB, vertexG);
+    graph.addEdge(vertexC, vertexD);
+    graph.addEdge(vertexC, vertexE);
+    graph.addEdge(vertexD, vertexH);
+    graph.addEdge(vertexE, vertexH);
+
+    List<Vertex<String>> visited = graph.depthFirst(vertexA);
+    assertEquals(7, visited.size());
+    assertEquals(vertexA, visited.get(0));
+    assertEquals(vertexB, visited.get(1));
+    assertEquals(vertexG, visited.get(2));
+    assertEquals(vertexC, visited.get(3));
+    assertEquals(vertexD, visited.get(4));
+    assertEquals(vertexH, visited.get(5));
+    assertEquals(vertexE, visited.get(6));
+  }
 }
